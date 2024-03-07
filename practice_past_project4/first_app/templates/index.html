@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is APP Page</h1>
+
+    {% comment %} Printing Tex from backend {% endcomment %}
+    <h1>{{name}}</h1>
+    <h1>{{text}}</h1>
+    {% comment %} Getting value vai condition from context dictionary {% endcomment %}
+    {%if val == 10%}
+    <h1>The value is: {{val}} </h1>
+    {%else%}
+    <h1>The value is not equal to: {{val}} </h1>
+    {%endif%}
+    {% comment %} Lopping by 'for' {% endcomment %}
+    <h1>Special Persons Name</h1>
+    <ul>
+        {%for x in names%}
+        <li> {{x}} </li>
+        {%endfor%}
+    </ul>
+    {% comment %} Lopping in dictionary {% endcomment %}
+    <h1>Dictionary Contents</h1>
+    {%for pro in obj%}
+        <li>Id: {{pro.id}} </li>
+        <li>Name : {{pro.name}} </li>
+        <li>Country : {{pro.country}} </li>
+        <li>Stadium : {{pro.stadium}} </li>
+        <br>
+    {%endfor%}
+
+    {% comment %} Exploring Filter Templates {% endcomment %}
+    <h1>{{names | join:"-"}}</h1> {% comment %} The list string value will be separated by - {% endcomment %}
+
+    {%for price in prices%}
+        <h1>Incresed price is: {{price|add:"10"}}</h1>
+    {%endfor%}
+    {% comment %} Joining two Lists {% endcomment %}
+    {{prices|add:names}}
+
+    <h1>The Length Of the value is: {{names | length}} </h1>
+    {% comment %} Slashing {% endcomment %}
+    <h1>The Resulted Slashed: {{slashVal | addslashes}} </h1>
+    {{name | capfirst}}
+
+    <h1>String without spaces: {{text | cut:" "}} </h1>
+
+    <h1>Real Time is: {{Todays_Date | date:"D d M Y"}}</h1>
+
+    <h1>Sorted Dictionary</h1>
+    {{sortItem | dictsort:"name"}}
+</body>
+</html>
